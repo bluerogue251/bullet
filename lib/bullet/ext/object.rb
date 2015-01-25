@@ -4,7 +4,7 @@ class Object
   end
 
   def primary_key_value
-    if self.class.respond_to?(:primary_key) && self.class.primary_key
+    if self.class.respond_to?(:primary_key) && [String, Symbol].include?(self.class.primary_key.class)
       self.send self.class.primary_key
     else
       self.id
